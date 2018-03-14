@@ -1,1 +1,2 @@
-token = ""
+TOKEN = ""
+DB_PATH = ""
