@@ -10,7 +10,7 @@ class SQLighter:
         self.cursor = self.connection.cursor()
 
     def get_random_joke(self):
-        query = "SELECT * FROM aneks LIMIT 1 OFFSET ABS(RANDOM()) % MAX((SELECT COUNT(*) FROM aneks), 1)"
+        query = "SELECT * FROM aneks WHERE id IN (SELECT id FROM aneks ORDER BY RANDOM() LIMIT 1)"
         with self.connection:
             return self.cursor.execute(query).fetchone()[2]
 
